@@ -40,11 +40,8 @@ views.py
 create templates folder 
 ![image](https://user-images.githubusercontent.com/67781881/127087212-4fa317f8-0c57-4874-94c9-c9383c143768.png)
 
-
-
-
-
-
-
-
-
+## Technologies Used
+* Python Django
+* CSS, Bootstrap
+* HTML
+* JS
