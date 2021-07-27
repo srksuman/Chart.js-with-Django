@@ -1,6 +1,6 @@
 # Chart.js with Django 
 Chart.js is a cool open source JavaScript library that helps you render HTML5 charts.
-#Project Demo
+# Project Demo
 ![h](https://user-images.githubusercontent.com/67781881/127086841-c00cdb4d-942e-4a60-b46b-8494946e0c94.gif)
 # Installation
 Add the Chart.js lib to your HTML page:
