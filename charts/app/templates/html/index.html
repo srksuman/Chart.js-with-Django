@@ -1,0 +1,29 @@
+{% extends 'core.html' %}
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col-md-7 offset-md-3 mt-5">
+<a href="{% url 'chart' %}" class="h4" style="text-decoration:None;">View Chart</a> <br> <br>
+<h2>Student Form</h2>
+<form action="" method="post">
+{% csrf_token %}
+<h6>Class:</h6>
+{{form.class_n}}
+<h6>Number of Student:</h6>
+{{form.number_of}}
+<input type="submit" value="Save" class="mt-4 btn btn-info">
+</form>
+<div class="mt-4">
+{% if messages %}
+{% for msg in messages  %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{msg}} <a href="{% url 'chart' %}">view</a>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}

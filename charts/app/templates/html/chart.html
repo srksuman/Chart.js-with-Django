@@ -1,0 +1,244 @@
+{% extends 'core.html' %}
+{% block content %}
+<div class="container">
+<a href="{% url 'form' %}" class="h4 mt-3 btn btn-dark">Go Back</a> <br> <br>
+<div class="row mt-4">
+
+{% comment %} Bar Chart {% endcomment %}
+<div class="col-md-6">
+<div class="border p-4 mx-1 my-1">
+<h4 class="text-muted">Bar Chart</h4>
+<canvas id="barChart" width="400" height="200"></canvas>
+</div>
+</div>
+
+{% comment %} Line Chart {% endcomment %}
+<div class="col-md-6">
+<div class="border p-4 mx-1 my-1">
+<h4 class="text-muted">Line Chart</h4>
+<canvas id="lineChart" width="400" height="200"></canvas>
+</div>
+</div>
+
+{% comment %} Pie Chart {% endcomment %}
+<div class="col-md-6">
+<div class="border p-4 mx-1 my-1">
+<h4 class="text-muted">Line Chart</h4>
+<canvas id="pieChart" width="400" height="200"></canvas>
+</div>
+</div>
+
+{% comment %} Radar Chart {% endcomment %}
+<div class="col-md-6">
+<div class="border p-4 mx-1 my-1">
+<h4 class="text-muted">Radar Chart</h4>
+<canvas id="radarChart" width="400" height="200"></canvas>
+</div>
+</div>
+
+{% comment %} doughnut Chart {% endcomment %}
+<div class="col-md-6">
+<div class="border p-4 mx-1 my-1">
+<h4 class="text-muted">Doughnut Chart</h4>
+<canvas id="doughnutChart" width="400" height="200"></canvas>
+</div>
+</div>
+
+{% comment %} Polar Area {% endcomment %}
+<div class="col-md-6">
+<div class="border p-4 mx-1 my-1">
+<h4 class="text-muted">Polar Area</h4>
+<canvas id="polarArea" width="400" height="200"></canvas>
+</div>
+</div>
+
+
+
+
+
+
+</div>
+</div>
+{% endblock content %}
+{% block script %}
+  <script>
+{% comment %} Bar chart {% endcomment %}
+var ctx = document.getElementById('barChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels:[{% for s in stu %}'{{s.class_n}}',{% endfor %}],
+          datasets: [{
+            label: 'Number of Studnets',
+            data: [{% for s in stu %}{{s.number_of}},{% endfor %}],
+            backgroundColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            },
+            gridLines: {
+          display: false
+        }
+        },
+         xAxes: [{
+        ticks: {
+          min: 0,
+        },
+        gridLines: {
+          color: "rgba(0, 0, 0, .125)",
+        }
+      }],
+       
+    }  
+});
+{% comment %} Line chart {% endcomment %}
+var ctx = document.getElementById('lineChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels:[{% for s in stu %}'{{s.class_n}}',{% endfor %}],
+          datasets: [{
+            label: 'Number of Studnets',
+            data: [{% for s in stu %}{{s.number_of}},{% endfor %}],
+            backgroundColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderWidth: 5
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            },
+            gridLines: {
+          display: false
+        }
+        },
+         xAxes: [{
+        ticks: {
+          min: 0,
+        },
+        gridLines: {
+          color: "rgba(0, 0, 0, .125)",
+        }
+      }],
+       
+    }  
+});
+
+{% comment %} pie chart {% endcomment %}
+var ctx = document.getElementById('pieChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels:[{% for s in stu %}'{{s.class_n}}',{% endfor %}],
+          datasets: [{
+            label: 'Number of Studnets',
+            data: [{% for s in stu %}{{s.number_of}},{% endfor %}],
+            backgroundColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderWidth: 5
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            },
+            gridLines: {
+          display: false
+        }
+        },
+         xAxes: [{
+        ticks: {
+          min: 0,
+        },
+        gridLines: {
+          color: "rgba(0, 0, 0, .125)",
+        }
+      }],
+       
+    }  
+});
+
+{% comment %} Radar chart {% endcomment %}
+var ctx = document.getElementById('radarChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels:[{% for s in stu %}'{{s.class_n}}',{% endfor %}],
+          datasets: [{
+            label: 'Number of Studnets',
+            data: [{% for s in stu %}{{s.number_of}},{% endfor %}],
+            backgroundColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderWidth: 5
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            },
+        }
+       
+    }  
+});
+
+{% comment %} doughnut chart {% endcomment %}
+var ctx = document.getElementById('doughnutChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels:[{% for s in stu %}'{{s.class_n}}',{% endfor %}],
+          datasets: [{
+            label: 'Number of Studnets',
+            data: [{% for s in stu %}{{s.number_of}},{% endfor %}],
+            backgroundColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderWidth: 5
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            },
+        }
+       
+    }  
+});
+
+
+{% comment %} polarArea {% endcomment %}
+var ctx = document.getElementById('polarArea').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'polarArea',
+    data: {
+        labels:[{% for s in stu %}'{{s.class_n}}',{% endfor %}],
+          datasets: [{
+            label: 'Number of Studnets',
+            data: [{% for s in stu %}{{s.number_of}},{% endfor %}],
+            backgroundColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderColor: [{% for col  in color  %}'{{col}}',{% endfor %}] ,
+            borderWidth: 5
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            },
+        }
+       
+    }  
+});
+
+
+    </script>
+{% endblock script %}
